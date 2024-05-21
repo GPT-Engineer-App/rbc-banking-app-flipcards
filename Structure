@@ -1,0 +1,15 @@
+rbc_banking_app/
+├── app.py
+├── static/
+│   ├── css/
+│   │   └── styles.css
+│   └── images/
+│       ├── debit-card.png
+│       └── credit-card.png
+├── templates/
+│   ├── base.html
+│   ├── account_summary.html
+│   ├── transaction_details.html
+│   └── offers_detail.html
+└── qr_codes/
+    └── (QR code images will be stored here)

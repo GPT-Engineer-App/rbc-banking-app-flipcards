@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block content %}
+<h1>Offers Detail</h1>
+<ul>
+  {% for offer in offers %}
+  <li>
+    <h2>{{ offer.title }}</h2>
+    <p>{{ offer.description }}</p>
+    <p>Points Required: {{ offer.points }}</p>
+    <a href="{{ url_for('generate_qr', offer_title=offer.title) }}">Redeem with QR Code</a>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block content %}
+<h1>Account Summary</h1>
+<div class="card-container">
+  <div class="card">
+    <div class="card-front">
+      <img src="{{ url_for('static', filename='images/debit-card.png') }}" alt="Chequing Account" />
+      <h2>Chequing Account</h2>
+      <p>Account Number: {{ accounts.chequing.account_number }}</p>
+      <p>Balance: {{ accounts.chequing.balance }}</p>
+    </div>
+    <div class="card-back">
+      <h2>Recent Transactions</h2>
+      <ul>
+        {% for transaction in accounts.chequing.transactions[:3] %}
+        <li>{{ transaction.date }} - {{ transaction.description }} - {{ transaction.amount }}</li>
+        {% endfor %}
+      </ul>
+      <a href="{{ url_for('transaction_details') }}">More details</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-front">
+      <img src="{{ url_for('static', filename='images/credit-card.png') }}" alt="Credit Card" />
+      <h2>Credit Card</h2>
+      <p>Balance: {{ accounts.credit.balance }}</p>
+      <p>Payment Due: {{ accounts.credit.due_date }}</p>
+    </div>
+    <div class="card-back">
+      <h2>Available Offers</h2>
+      <ul>
+        {% for offer in accounts.credit.offers %}
+        <li>{{ offer.title }} - {{ offer.description }}</li>
+        {% endfor %}
+      </ul>
+      <a href="{{ url_for('offers_detail') }}">Learn more</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
